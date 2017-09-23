@@ -1,6 +1,6 @@
 Email Queue Service
 ===================
-TBD
+Consumes email send requests from the AMQP queue and sends email via configured SMTP server
 
 Service Environment Variables
 -------------------------------------------

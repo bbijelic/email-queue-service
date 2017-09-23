@@ -24,7 +24,7 @@
 			    <path.base>${project.build.directory}/service-${project.version}/service-${project.version}</path.base>
 							
                 <!-- Service properties -->
-                <service.timezone>CET</service.timezone>
+                <service.timezone>UTC</service.timezone>
                 <service.main.class>com.github.bbijelic.service.email.EmailQueueService</service.main.class>
                                 		
                 <!-- Logging -->
