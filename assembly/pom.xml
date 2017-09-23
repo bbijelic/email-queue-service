@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+        <groupId>com.github.bbijelic</groupId>
+        <artifactId>email-queue-service-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+	<artifactId>email-queue-service-assembly</artifactId>
+	<packaging>pom</packaging>
+	
+	<name>Email Queue : Assembly</name>
+	<description>Email Queue Service Assembly Module</description>
+	
+	<dependencies>
+	   <dependency>
+            <groupId>com.github.bbijelic</groupId>
+            <artifactId>email-queue-service</artifactId>
+			<version>${project.version}</version>
+	   </dependency>
+	</dependencies>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${version.plugin.maven.assembly}</version>
+                <executions>
+                    <execution>
+                        <id>assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <updateOnly>false</updateOnly>
+                    <descriptors>
+                        <descriptor>${project.basedir}/src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <finalName>service-${project.version}</finalName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+		
+</project>

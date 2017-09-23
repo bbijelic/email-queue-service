@@ -1,0 +1,5 @@
+com/github/bbijelic/service/email/EmailQueueService.class
+com/github/bbijelic/service/email/config/QueueConfiguration.class
+com/github/bbijelic/service/email/amqp/EmailMessageConsumer.class
+com/github/bbijelic/service/email/amqp/AmqpHandler.class
+com/github/bbijelic/service/email/config/EmailQueueServiceConfiguration.class

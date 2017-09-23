@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>email-queue-service</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    
+    <!-- Dependencies -->
+    <dependencySets>
+        <dependencySet>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+    
+    <!-- Files -->
+    <fileSets>
+    
+        <!-- Binaries (start/stop scripts) -->
+        <fileSet>
+            <filtered>true</filtered>
+            <directory>${project.basedir}/src/assembly/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <fileMode>755</fileMode>
+        </fileSet>
+        
+        <!-- Configuration -->
+		<fileSet>
+			<filtered>true</filtered>
+			<directory>${project.basedir}/src/assembly/config</directory>
+			<outputDirectory>config</outputDirectory>
+			<includes>
+				<include>config.yml</include>
+			</includes>
+		</fileSet>
+		          
+        <!-- Empty directories -->
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>run</outputDirectory>
+            <excludes>
+              <exclude>*/**</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>logs</outputDirectory>
+            <excludes>
+              <exclude>*/**</exclude>
+            </excludes>
+        </fileSet>
+        
+    </fileSets>
+    
+</assembly>

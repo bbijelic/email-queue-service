@@ -1,0 +1,39 @@
+#!/bin/bash
+
+SERVICE_BASE=${path.base}
+SERVICE_PID=${path.base}/run/service.pid
+SERVICE_LOG=${path.base}/logs/service.log
+SERVICE_JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -Duser.timezone=${service.timezone}"
+
+if [ ! -d $SERVICE_BASE ] ; then
+  echo "Path to service directory is not correct! Please set up SERVICE_BASE."
+  exit 1
+fi
+
+if [ -z "${DOCKER}" ]; then
+    # check if PID file exists
+    if [ -f $SERVICE_PID ] ; then
+      PID=`cat $SERVICE_PID`
+      if [ `ps axf | grep ${PID} | grep -v grep | wc -l` -eq 0 ] ; then
+        echo "Service is not running, but $SERVICE_PID exists."
+        exit 1
+      else
+        echo "Service is already running."
+        exit 1
+      fi
+    fi
+else
+    rm -f $SERVICE_PID
+fi
+ 
+echo -e "Starting service ... ";
+
+# Start Service
+java -noverify $SERVICE_JAVA_OPTS -cp '${path.base}/config:${path.base}/lib/*' ${service.main.class} server ${path.base}/config/config.yml > $SERVICE_LOG &
+
+# Store PID file
+echo $! > $SERVICE_PID
+
+echo -e "Service started with pid: $!";
+
+exit 0

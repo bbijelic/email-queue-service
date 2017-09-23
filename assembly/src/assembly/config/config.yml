@@ -1,0 +1,42 @@
+# Server configuration
+server:
+  applicationConnectors:
+  - type: http
+    port: ${EMAIL_SERVICE_API_PORT:-8443}
+  adminConnectors:
+  - type: http
+    port: ${EMAIL_SERVICE_ADMIN_PORT:-9443}
+  requestLog:
+    appenders:
+      - type: file
+        threshold: ${logging.request.threshold}
+        currentLogFilename: ${path.base}/logs/requests.log
+        archivedLogFilenamePattern: ${path.base}/logs/requests-%d.log
+        archive: ${logging.request.archive}
+        archivedFileCount: ${logging.request.archive.filecount}
+        timeZone: ${logging.request.timezone}
+
+# Logging configuration
+logging:
+  level: ${logging.level}
+  appenders:
+    - type: file
+      threshold: ${logging.level}
+      currentLogFilename: ${path.base}/logs/service.log
+      archivedLogFilenamePattern: ${path.base}/service-%d.log
+      archive: ${logging.archive}
+      archivedFileCount: ${logging.archive.filecount}
+      timeZone: ${logging.timezone}
+      logFormat: "${logging.pattern}"
+      
+# AMQP queue configuration
+amqp:
+  hostname: ${EMAIL_SERVICE_AMQP_HOST:-localhost}
+  port: ${EMAIL_SERVICE_AMQP_PORT:-5672}
+  virtualHost: ${EMAIL_SERVICE_AMQP_VHOST}
+  username: ${EMAIL_SERVICE_AMQP_USERNAME:-amqpuser}
+  password: ${EMAIL_SERVICE_AMQP_PASSWORD:-amqppassword}
+  exchange: ${EMAIL_SERVICE_AMQP_EXCHANGE:-amq.direct}
+  routingKeys:
+    - email
+    

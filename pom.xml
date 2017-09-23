@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  
+    <modelVersion>4.0.0</modelVersion>  
+    <groupId>com.github.bbijelic</groupId>  
+    <artifactId>email-queue-service-parent</artifactId>  
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    
+    <name>Email Queue Service</name>
+	<description>Email Queue Service</description>
+    
+    <profiles>
+        <profile>
+            <id>base</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<properties>
+			
+			    <path.base>${project.build.directory}/service-${project.version}/service-${project.version}</path.base>
+							
+                <!-- Service properties -->
+                <service.timezone>CET</service.timezone>
+                <service.main.class>com.github.bbijelic.service.email.EmailQueueService</service.main.class>
+                                		
+                <!-- Logging -->
+                <logging.level>DEBUG</logging.level>
+                <logging.archive>true</logging.archive>
+                <logging.archive.filecount>5</logging.archive.filecount>
+                <logging.timezone>UTC</logging.timezone>
+                <logging.pattern>%d{HH:mm:ss.SSS} [%thread] %-5level [%X{txid}] %logger{35} - %msg%n</logging.pattern>
+                
+                <logging.request.threshold>TRACE</logging.request.threshold>
+                <logging.request.archive>true</logging.request.archive>
+                <logging.request.archive.filecount>5</logging.request.archive.filecount>
+                <logging.request.timezone>UTC</logging.request.timezone>
+			
+			</properties>
+	   </profile>
+	</profiles>
+	
+	<properties>
+        <!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+		<!-- Java -->
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+			        
+        <!-- Plugin versions -->
+        <version.plugin.maven.assembly>3.0.0</version.plugin.maven.assembly>
+        <version.plugin.maven.compiler> 3.6.1</version.plugin.maven.compiler>
+        
+        <!-- Library versions -->
+        <version.dropwizard>1.1.4</version.dropwizard>
+        <version.junit>5.0.0</version.junit>
+	</properties>
+	
+	<modules>
+	   <module>service</module>
+	   <module>assembly</module>
+	</modules>
+  
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+            <version>${version.junit}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${version.dropwizard}</version>
+        </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.plugin.maven.compiler}</version>
+				<configuration>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+  
+</project>  

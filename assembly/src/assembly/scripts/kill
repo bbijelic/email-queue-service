@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SERVICE_BASE=${path.base}
+SERVICE_PID=${path.base}/run/service.pid
+
+if [ ! -d $SERVICE_BASE ] ; then
+  echo "Path to service directory is not correct! Please set up SERVICE_BASE."
+  exit 1
+fi
+
+# Check if PID file exists
+if [ -f $SERVICE_PID ] ; then
+  PID=`cat $SERVICE_PID`
+  echo -e "Stopping service with pid $PID ..."
+  kill -15 $PID
+  # remove PID file
+  rm -f $SERVICE_PID
+  echo -e "Service with pid $PID stopped.";
+else
+  echo -e "Service not running."
+fi
+
+exit 0 
