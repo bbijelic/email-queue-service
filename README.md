@@ -1,15 +1,21 @@
-# email-queue-service
 Email Queue Service
+===================
+TBD
 
-Environment variables
----------------------
+Service Environment Variables
+-------------------------------------------
+| Environment variable  | Desciption |
+| ------------- | ------------- |
+| EMAIL_SERVICE_API_PORT  | Service API port  |
+| EMAIL_SERVICE_ADMIN_PORT  | Service admin port  |
 
-EMAIL_SERVICE_API_PORT - 8443
-EMAIL_SERVICE_ADMIN_PORT - 9443
-
-EMAIL_SERVICE_AMQP_HOST - localhost
-EMAIL_SERVICE_AMQP_PORT - 5672
-EMAIL_SERVICE_AMQP_USERNAME - amqpuser
-EMAIL_SERVICE_AMQP_PASSWORD - amqppassword
-EMAIL_SERVICE_AMQP_VHOST - virtual_host
-EMAIL_SERVICE_AMQP_EXCHANGE - amqp.direct
+AMQP Environment Variables
+-------------------------------------------
+| Environment variable  | Desciption |
+| ------------- | ------------- |
+| EMAIL_SERVICE_AMQP_HOST | AMQP server hostname  |
+| EMAIL_SERVICE_AMQP_PORT | AMQP server port  |
+| EMAIL_SERVICE_AMQP_VHOST  | AMQP server virtual host  |
+| EMAIL_SERVICE_AMQP_USERNAME | AMQP server username  |
+| EMAIL_SERVICE_AMQP_PASSWORD | AMQP server password  |
+| EMAIL_SERVICE_AMQP_EXCHANGE| AMQP server exchange name  |
