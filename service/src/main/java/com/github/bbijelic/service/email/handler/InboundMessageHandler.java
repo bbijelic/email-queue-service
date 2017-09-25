@@ -11,6 +11,7 @@ import org.simplejavamail.mailer.config.TransportStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.bbijelic.service.email.config.QueueConfiguration;
 import com.github.bbijelic.service.email.config.mail.MailerConfiguration;
 import com.github.bbijelic.service.email.config.mail.ProxyConfiguration;
@@ -42,17 +43,25 @@ public class InboundMessageHandler implements Managed {
     private MailerConfiguration mailerConfiguration;
     
     /**
+     * Object mapper
+     */
+    private ObjectMapper objectMapper;
+    
+    /**
      * Constructor
      * 
      * @param queueConfiguration the queue configuration
      * @param mailerConfiguration the mailer configuration
+     * @param objectMapper the object mapper
      */
     public InboundMessageHandler(
         final QueueConfiguration queueConfiguration,
-        final MailerConfiguration mailerConfiguration) {
+        final MailerConfiguration mailerConfiguration,
+        final ObjectMapper objectMapper) {
             
         this.queueConfiguration = queueConfiguration;
         this.mailerConfiguration = mailerConfiguration;
+        this.objectMapper = objectMapper;
         
         initializeMailer();
         initializeAmqp();
@@ -165,7 +174,7 @@ public class InboundMessageHandler implements Managed {
         }
         
         // Define consumer
-        channel.basicConsume(queue, false, new EmailMessageConsumer(channel, mailer));
+        channel.basicConsume(queue, false, new EmailMessageConsumer(channel, mailer, objectMapper));
         
         LOGGER.debug("AMQP handler started");
     }

@@ -67,7 +67,8 @@ public class EmailQueueService extends Application<EmailQueueServiceConfiguratio
         env.lifecycle().manage(
             new InboundMessageHandler(
                 config.getQueueConfiguration(),
-                config.getMailerConfiguration()));
+                config.getMailerConfiguration(),
+                env.getObjectMapper()));
     }
     
 }
