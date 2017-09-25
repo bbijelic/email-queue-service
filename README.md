@@ -2,6 +2,14 @@ Email Queue Service
 ===================
 Consumes email send requests from the AMQP queue and sends email via configured SMTP server
 
+```
++--------------+     +-----------------------+     +---------------+
+|              |     |                       |     |               |
+|  AMQP Queue  +----->  Email Queue Service  +----->  SMTP Server  |
+|              |     |                       |     |               |
++--------------+     +-----------------------+     +---------------+
+```
+
 Service Environment Variables
 -------------------------------------------
 | Environment variable  | Desciption |
