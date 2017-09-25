@@ -1,5 +1,9 @@
 com/github/bbijelic/service/email/EmailQueueService.class
-com/github/bbijelic/service/email/config/QueueConfiguration.class
-com/github/bbijelic/service/email/amqp/EmailMessageConsumer.class
-com/github/bbijelic/service/email/amqp/AmqpHandler.class
 com/github/bbijelic/service/email/config/EmailQueueServiceConfiguration.class
+com/github/bbijelic/service/email/config/mail/SmtpConfiguration.class
+com/github/bbijelic/service/email/handler/EmailMessageConsumer.class
+com/github/bbijelic/service/email/config/mail/ProxyConfiguration.class
+com/github/bbijelic/service/email/config/QueueConfiguration.class
+com/github/bbijelic/service/email/config/mail/Transport.class
+com/github/bbijelic/service/email/config/mail/MailerConfiguration.class
+com/github/bbijelic/service/email/handler/InboundMessageHandler.class

@@ -1,7 +1,10 @@
-package com.github.bbijelic.service.email.amqp;
+package com.github.bbijelic.service.email.handler;
 
 import java.io.IOException;
 
+import org.simplejavamail.email.Email;
+import org.simplejavamail.email.EmailBuilder;
+import org.simplejavamail.mailer.Mailer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,18 +31,32 @@ public class EmailMessageConsumer extends DefaultConsumer {
     private Channel channel;
     
     /**
+     * Mailer
+     */
+    private Mailer mailer;
+    
+    /**
      * Constructor channel
      * @param channel the amqp channel
      */
-    public EmailMessageConsumer(Channel channel) {
+    public EmailMessageConsumer(final Channel channel, final Mailer mailer) {
         super(channel);
         
         this.channel = channel;
+        this.mailer = mailer;
     }
     
     @Override
-    public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
+    public void handleDelivery(
+        String consumerTag, 
+        Envelope envelope, 
+        BasicProperties properties, 
+        byte[] body) 
+            throws IOException {
+            
         LOGGER.debug("Handling message of size: {}", body.length);
+        
+        // TODO Handle inbound message
         
         // Acknowledge the message
         channel.basicAck(envelope.getDeliveryTag(), false);

@@ -11,8 +11,8 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.bbijelic.service.email.amqp.AmqpHandler;
 import com.github.bbijelic.service.email.config.EmailQueueServiceConfiguration;
+import com.github.bbijelic.service.email.handler.InboundMessageHandler;
 
 /**
  * Email Queue Service Main Class
@@ -64,7 +64,10 @@ public class EmailQueueService extends Application<EmailQueueServiceConfiguratio
         LOGGER.info("Starting " + getName());
         
         // Manage Amqp Handler
-        env.lifecycle().manage(new AmqpHandler(config.getQueueConfiguration()));
+        env.lifecycle().manage(
+            new InboundMessageHandler(
+                config.getQueueConfiguration(),
+                config.getMailerConfiguration()));
     }
     
 }

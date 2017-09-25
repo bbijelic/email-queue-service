@@ -40,3 +40,14 @@ amqp:
   routingKeys:
     - email
     
+# Mail configuraturation
+mail:
+
+  # SMTP configuration
+  smtp:
+    host: ${EMAIL_SERVICE_SMTP_HOST:-localhost}
+    port: ${EMAIL_SERVICE_SMTP_PORT:-25}
+    username: ${EMAIL_SERVICE_SMTP_USERNAME:-smtpuser}
+    password: ${EMAIL_SERVICE_SMTP_PASSWORD:-smtppassword}
+    transport: PLAIN
+    

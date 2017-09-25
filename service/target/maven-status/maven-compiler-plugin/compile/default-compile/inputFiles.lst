@@ -1,5 +1,9 @@
-/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/amqp/EmailMessageConsumer.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/mail/MailerConfiguration.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/mail/Transport.java
 /projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/EmailQueueServiceConfiguration.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/mail/ProxyConfiguration.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/handler/InboundMessageHandler.java
 /projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/EmailQueueService.java
-/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/amqp/AmqpHandler.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/mail/SmtpConfiguration.java
 /projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/config/QueueConfiguration.java
+/projects/email-queue-service/service/src/main/java/com/github/bbijelic/service/email/handler/EmailMessageConsumer.java

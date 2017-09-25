@@ -19,3 +19,12 @@ AMQP Environment Variables
 | EMAIL_SERVICE_AMQP_USERNAME | AMQP server username  |
 | EMAIL_SERVICE_AMQP_PASSWORD | AMQP server password  |
 | EMAIL_SERVICE_AMQP_EXCHANGE| AMQP server exchange name  |
+
+SMTP Environment Variables
+-------------------------------------------
+| Environment variable  | Desciption |
+| ------------- | ------------- |
+| EMAIL_SERVICE_SMTP_HOST | SMTP server hostname  |
+| EMAIL_SERVICE_SMTP_PORT | SMTP server port  |
+| EMAIL_SERVICE_SMTP_USERNAME | SMTP server username  |
+| EMAIL_SERVICE_SMTP_PASSWORD | SMTP server password  |

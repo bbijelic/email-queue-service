@@ -3,7 +3,7 @@
 SERVICE_BASE=/projects/email-queue-service/assembly/target/service-1.0.0-SNAPSHOT/service-1.0.0-SNAPSHOT
 SERVICE_PID=/projects/email-queue-service/assembly/target/service-1.0.0-SNAPSHOT/service-1.0.0-SNAPSHOT/run/service.pid
 SERVICE_LOG=/projects/email-queue-service/assembly/target/service-1.0.0-SNAPSHOT/service-1.0.0-SNAPSHOT/logs/service.log
-SERVICE_JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -Duser.timezone=CET"
+SERVICE_JAVA_OPTS="-Djava.security.egd=file:///dev/urandom -Duser.timezone=UTC"
 
 if [ ! -d $SERVICE_BASE ] ; then
   echo "Path to service directory is not correct! Please set up SERVICE_BASE."
