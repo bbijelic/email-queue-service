@@ -9,6 +9,6 @@ RUN mvn install -P docker
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-COPY --from=build /app/assembly/service/service /app
+COPY --from=build /app/assembly/target/service/service /app
 EXPOSE 8443 9443
 CMD ["sh /app/bin/start"]
