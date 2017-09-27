@@ -41,7 +41,7 @@
                     <descriptors>
                         <descriptor>${project.basedir}/src/assembly/assembly.xml</descriptor>
                     </descriptors>
-                    <finalName>service-${project.version}</finalName>
+                    <finalName>service</finalName>
                 </configuration>
             </plugin>
         </plugins>

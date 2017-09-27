@@ -3,6 +3,9 @@ package com.github.bbijelic.service.email.dto;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,69 +20,93 @@ import com.google.common.base.MoreObjects;
 public class Message {
     
     /**
-     * List of mail 'TO' recepients
+     * Email author
+     */
+    @Valid
+    @NotNull
+    @JsonProperty("from")
+    private MessageRecipient from;
+    
+    /**
+     * From getter
+     * @return the 'FROM' address
+     */
+    public MessageRecipient getFrom() {
+        return from;
+    }
+    
+    /**
+     * From setter
+     * @param from the 'from' addr
+     */
+    public void setFrom(MessageRecipient from) {
+        this.from = from;
+    }
+    
+    /**
+     * List of mail 'TO' recipients
      */
     @NotEmpty
     @JsonProperty("to")
-    private List<String> to;
+    private List<MessageRecipient> to;
     
     /**
-     * List of mail 'TO' recepients getter
-     * @return the list of mail 'TO' recepients
+     * List of mail 'TO' recipients getter
+     * @return the list of mail 'TO' recipients
      */
-    public List<String> getTo() {
+    public List<MessageRecipient> getTo() {
         return to;
     }
     
     /**
      * List of mail 'TO' recepients
-     * @param to the list of mail 'TO' recepients
+     * @param to the list of mail 'TO' recipients
      */
-    public void setTo(List<String> to) {
+    public void setTo(List<MessageRecipient> to) {
         this.to = to;
     }
     
     /**
-     * List of mail 'CC' recepients
+     * List of mail 'CC' recipients
      */
     @JsonProperty("cc")
-    private List<String> cc;
+    private List<MessageRecipient> cc;
     
     /**
-     * List of mail 'CC' recepients getter
-     * @return the list of mail 'CC' recepients optional
+     * List of mail 'CC' recipients getter
+     * @return the list of mail 'CC' recipients optional
      */
-    public Optional<List<String>> getCc() {
+    public Optional<List<MessageRecipient>> getCc() {
         return Optional.ofNullable(cc);
     }
     
     /**
-     * List of mail 'CC' recepients setter
-     * @param cc the list of mail 'CC' recepients
+     * List of mail 'CC' recipients setter
+     * @param cc the list of mail 'CC' recipients
      */
-    public void setCc(List<String> cc) {
+    public void setCc(List<MessageRecipient> cc) {
         this.cc = cc;
     }
     
     /**
-     * List of mail 'BCC' recepients
+     * List of mail 'BCC' recipients
      */
     @JsonProperty("bcc")
-    private List<String> bcc;
+    private List<MessageRecipient> bcc;
     
     /**
-     * List of mail 'BCC' recepients getter
-     * @return the list of mail 'BCC' recepients optional
+     * List of mail 'BCC' recipients getter
+     * @return the list of mail 'BCC' recipients optional
      */
-    public Optional<List<String>> getBcc() {
+    public Optional<List<MessageRecipient>> getBcc() {
         return Optional.ofNullable(bcc);
     }
     
     /**
-     * List of mail 'BCC' recepients setter
-     * @param bcc the list of mail 'BCC' recepients
+     * List of mail 'BCC' recipients setter
+     * @param bcc the list of mail 'BCC' recipients
      */
-    public void setBcc(List<String> bcc) {
+    public void setBcc(List<MessageRecipient> bcc) {
         this.bcc = bcc;
     }
     
@@ -152,6 +179,7 @@ public class Message {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+            .add("from", from)
             .add("to", to)
             .add("cc", cc)
             .add("bcc", bcc)

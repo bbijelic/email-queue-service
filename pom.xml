@@ -13,6 +13,7 @@
 	<description>Email Queue Service</description>
     
     <profiles>
+        <!-- Base development profile -->
         <profile>
             <id>base</id>
             <activation>
@@ -20,8 +21,8 @@
 			</activation>
 			
 			<properties>
-			
-			    <path.base>${project.build.directory}/service-${project.version}/service-${project.version}</path.base>
+			    <!-- Base path -->
+			    <path.base>${project.build.directory}/service/service</path.base>
 							
                 <!-- Service properties -->
                 <service.timezone>UTC</service.timezone>
@@ -34,10 +35,27 @@
                 <logging.timezone>UTC</logging.timezone>
                 <logging.pattern>%d{HH:mm:ss.SSS} [%thread] %-5level [%X{txid}] %logger{35} - %msg%n</logging.pattern>
                 
+                <!-- Request Logging -->
                 <logging.request.threshold>TRACE</logging.request.threshold>
                 <logging.request.archive>true</logging.request.archive>
                 <logging.request.archive.filecount>5</logging.request.archive.filecount>
                 <logging.request.timezone>UTC</logging.request.timezone>
+			
+			</properties>
+	   </profile>
+	   <!-- Profile for the Docker image -->
+	   <profile>
+            <id>docker</id>
+			
+			<properties>
+			    <!-- Base path --> 
+			    <path.base>/app</path.base>                                		
+                
+                <!-- Logging -->
+                <logging.level>INFO</logging.level>
+                
+                <!-- Request Logging -->
+                <logging.request.threshold>INFO</logging.request.threshold>
 			
 			</properties>
 	   </profile>
@@ -53,7 +71,7 @@
 			        
         <!-- Plugin versions -->
         <version.plugin.maven.assembly>3.0.0</version.plugin.maven.assembly>
-        <version.plugin.maven.compiler> 3.6.1</version.plugin.maven.compiler>
+        <version.plugin.maven.compiler>3.6.1</version.plugin.maven.compiler>
         
         <!-- Library versions -->
         <version.dropwizard>1.1.4</version.dropwizard>
